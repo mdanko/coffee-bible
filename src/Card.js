@@ -1,21 +1,16 @@
-import { Box, Text, Image, useBreakpointValue } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  Image,
+  useBreakpointValue,
+  Heading,
+} from '@chakra-ui/react';
 
-const GENDER = Object.freeze({
-  Male: '♂️',
-  Female: '♀️',
-  Other: '☿️',
-});
-const STATUS_BG_COLOR = Object.freeze({
-  Alive: 'cyan.300',
-  Deceased: 'black',
-});
-
-const Card = ({ image, name, species, gender, status }) => {
+const Card = ({ image, title, subtitle, description }) => {
   const justifySelfCard = useBreakpointValue({
     base: 'start',
     sm: 'center',
   });
-  const isAlive = status === 'Alive' || status === 'Operational';
 
   return (
     <Box
@@ -26,8 +21,8 @@ const Card = ({ image, name, species, gender, status }) => {
       rounded="10px"
       borderColor="gray.300"
       boxShadow="md"
-      bg={isAlive ? STATUS_BG_COLOR.Alive : STATUS_BG_COLOR.Deceased}
-      color={isAlive ? '#2d383c' : 'grey'}
+      bg="cyan.300"
+      color="#2d383c"
       fontSize="2rem"
       textAlign="center"
       fontFamily="Consolas"
@@ -36,13 +31,12 @@ const Card = ({ image, name, species, gender, status }) => {
       <Image
         rounded="0.5rem"
         src={image}
-        alt={name}
-        filter={isAlive ? '' : 'grayscale(1)'}
+        alt={`${title} ${subtitle}`}
+        bg="white"
       />
-      <Text>{name}</Text>
-      <Text fontSize="xl">
-        {species} {GENDER[gender] || GENDER.Other}
-      </Text>
+      <Heading>{title}</Heading>
+      <Text fontSize="2xl">{subtitle}</Text>
+      <Text fontSize="xl">{description}</Text>
     </Box>
   );
 };
