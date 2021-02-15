@@ -1,40 +1,33 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { ChakraProvider, Grid, SimpleGrid, theme } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import Card from './Card';
 
 function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://finalspaceapi.com/api/v0/character')
+      .then(res => res.json())
+      .then(data => setData(data));
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+      <Grid minH="100vh" p={3}>
+        <ColorModeSwitcher justifySelf="flex-end" />
+        <SimpleGrid minChildWidth="410px" spacing="80px">
+          {data.map(item => (
+            <Card
+              image={item.img_url}
+              name={item.name}
+              species={item.species}
+              gender={item.gender}
+              status={item.status}
+            />
+          ))}
+        </SimpleGrid>
+      </Grid>
     </ChakraProvider>
   );
 }
