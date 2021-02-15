@@ -4,9 +4,12 @@ import {
   Image,
   useBreakpointValue,
   Heading,
+  Tag,
+  TagLabel,
+  HStack,
 } from '@chakra-ui/react';
 
-const Card = ({ image, title, subtitle, description }) => {
+const Card = ({ image, title, subtitle, description, tags }) => {
   const justifySelfCard = useBreakpointValue({
     base: 'start',
     sm: 'center',
@@ -37,6 +40,13 @@ const Card = ({ image, title, subtitle, description }) => {
       <Heading>{title}</Heading>
       <Text fontSize="2xl">{subtitle}</Text>
       <Text fontSize="xl">{description}</Text>
+      <HStack spacing="10px">
+        {tags.map(tag => (
+          <Tag size="sm" key="sm" variant="subtle" colorScheme="teal">
+            <TagLabel>{tag}</TagLabel>
+          </Tag>
+        ))}
+      </HStack>
     </Box>
   );
 };

@@ -31,7 +31,8 @@ function App() {
               image={item.image}
               title={item.roastery}
               subtitle={`${item.country} ${item.farm}`}
-              description={item.notes.join(', ')}
+              description={item.process}
+              tags={item.notes}
             />
           ))}
         </SimpleGrid>
