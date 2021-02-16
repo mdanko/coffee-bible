@@ -40,9 +40,15 @@ const Card = ({ image, title, subtitle, description, tags }) => {
       <Heading>{title}</Heading>
       <Text fontSize="2xl">{subtitle}</Text>
       <Text fontSize="xl">{description}</Text>
-      <HStack spacing="10px">
+      <HStack m="10px" spacing="10px">
         {tags.map(tag => (
-          <Tag size="sm" key="sm" variant="subtle" colorScheme="teal">
+          <Tag
+            size="md"
+            key={tag}
+            borderRadius="full"
+            variant="subtle"
+            colorScheme="cyan"
+          >
             <TagLabel>{tag}</TagLabel>
           </Tag>
         ))}
