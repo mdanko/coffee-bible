@@ -1,23 +1,27 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Box, IconButton, Stack, Heading, Image } from '@chakra-ui/react';
+import { IconButton, Stack, Heading, Image, Flex } from '@chakra-ui/react';
 import React from 'react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 const AppBar = () => {
   return (
-    <Box h="60px" justifyContent="center" d="flex" p={4}>
-      <Stack direction="row" marginLeft="auto">
-        <Image
-          filter="hue-rotate(15deg)"
-          h="50px"
-          borderRadius="full"
-          src="https://cdn.dribbble.com/users/1274247/screenshots/6149307/artboard_1_copy-1.jpg"
-          alt="Coffee Bible logo"
-        />
-        <Heading fontFamily="ONEDAY">My Coffee Bible</Heading>
-      </Stack>
+    <Flex as="nav" align="center" justify="space-between" padding={8}>
+      <Flex align="center" mr={5}>
+        <Stack direction="row">
+          <Image
+            filter="hue-rotate(15deg)"
+            h="50px"
+            borderRadius="full"
+            src="https://cdn.dribbble.com/users/1274247/screenshots/6149307/artboard_1_copy-1.jpg"
+            alt="Coffee Bible logo"
+          />
+          <Heading fontFamily="ONEDAY" display={{ sm: 'none', md: 'block' }}>
+            Coffee Bible
+          </Heading>
+        </Stack>
+      </Flex>
 
-      <Stack spacing={4} direction="row" marginLeft="auto">
+      <Stack spacing={4} direction="row" justifySelf="flex-end">
         <IconButton
           aria-label="Add coffee"
           icon={<AddIcon />}
@@ -26,7 +30,7 @@ const AppBar = () => {
         />
         <ColorModeSwitcher />
       </Stack>
-    </Box>
+    </Flex>
   );
 };
 

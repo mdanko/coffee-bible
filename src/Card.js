@@ -21,6 +21,7 @@ const Card = ({ image, title, subtitle, icon, tags }) => {
       p="10px"
       m="10px"
       maxW="350px"
+      maxH="520px"
       borderWidth="1px"
       rounded="md"
       boxShadow="md"
