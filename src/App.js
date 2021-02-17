@@ -1,6 +1,7 @@
 import { ChakraProvider, Grid, SimpleGrid, theme } from '@chakra-ui/react';
 import Card from './Card';
 import { COFFEE } from './data';
+import { PROCESS } from './constants';
 import AppBar from './AppBar';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
               image={item.image}
               title={item.roastery}
               subtitle={`${item.country} ${item.farm}`}
-              description={item.process}
+              icon={PROCESS[item.process]}
               tags={item.notes}
             />
           ))}
