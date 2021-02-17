@@ -14,7 +14,7 @@ const AppBar = () => {
           src="https://cdn.dribbble.com/users/1274247/screenshots/6149307/artboard_1_copy-1.jpg"
           alt="Coffee Bible logo"
         />
-        <Heading>My Coffee Bible</Heading>
+        <Heading fontFamily="ONEDAY">My Coffee Bible</Heading>
       </Stack>
 
       <Stack spacing={4} direction="row" marginLeft="auto">

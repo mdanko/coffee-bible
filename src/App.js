@@ -3,10 +3,12 @@ import Card from './Card';
 import { COFFEE } from './data';
 import { PROCESS } from './constants';
 import AppBar from './AppBar';
+import Fonts from './Fonts';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
+      <Fonts />
       <AppBar />
       <Grid minH="100vh" p={3}>
         <SimpleGrid minChildWidth="400px" spacing="80px">
