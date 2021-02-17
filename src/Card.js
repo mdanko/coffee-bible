@@ -22,11 +22,8 @@ const Card = ({ image, title, subtitle, icon, tags }) => {
       m="10px"
       maxW="350px"
       borderWidth="1px"
-      rounded="10px"
-      borderColor="gray.300"
+      rounded="md"
       boxShadow="md"
-      bg="cyan.300"
-      color="#2d383c"
       fontSize="2rem"
       textAlign="center"
       fontFamily="Consolas"
@@ -48,7 +45,7 @@ const Card = ({ image, title, subtitle, icon, tags }) => {
             key={tag}
             borderRadius="full"
             variant="subtle"
-            colorScheme="cyan"
+            colorScheme="orange"
           >
             <TagLabel>{tag}</TagLabel>
           </Tag>

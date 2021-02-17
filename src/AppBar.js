@@ -8,7 +8,7 @@ const AppBar = () => {
     <Box h="60px" justifyContent="center" d="flex" p={4}>
       <Stack direction="row" marginLeft="auto">
         <Image
-          filter="hue-rotate(180deg)"
+          filter="hue-rotate(15deg)"
           h="50px"
           borderRadius="full"
           src="https://cdn.dribbble.com/users/1274247/screenshots/6149307/artboard_1_copy-1.jpg"
@@ -22,7 +22,7 @@ const AppBar = () => {
           aria-label="Add coffee"
           icon={<AddIcon />}
           variant="outline"
-          colorScheme="cyan"
+          colorScheme="orange"
         />
         <ColorModeSwitcher />
       </Stack>
