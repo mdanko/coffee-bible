@@ -10,8 +10,11 @@ function App() {
     <ChakraProvider theme={theme}>
       <Fonts />
       <AppBar />
-      <Grid minH="100vh" p={3}>
-        <SimpleGrid minChildWidth="400px" spacing="80px">
+      <Grid p={3}>
+        <SimpleGrid
+          minChildWidth={{ base: '300px', md: '400px' }}
+          spacing="80px"
+        >
           {COFFEE.map(item => (
             <Card
               key={item.id}
