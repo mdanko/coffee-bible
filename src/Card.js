@@ -8,9 +8,10 @@ import {
   TagLabel,
   HStack,
   Icon,
+  Tooltip,
 } from '@chakra-ui/react';
 
-const Card = ({ image, title, subtitle, icon, tags }) => {
+const Card = ({ image, title, subtitle, iconTooltip, icon, tags }) => {
   const justifySelfCard = useBreakpointValue({
     base: 'start',
     sm: 'center',
@@ -38,7 +39,11 @@ const Card = ({ image, title, subtitle, icon, tags }) => {
       />
       <Heading>{title}</Heading>
       <Text fontSize="2xl">{subtitle}</Text>
-      <Icon as={icon} />
+      <Tooltip label={iconTooltip}>
+        <span>
+          <Icon as={icon} />
+        </span>
+      </Tooltip>
       <HStack m="10px" spacing="10px">
         {tags.map(tag => (
           <Tag
