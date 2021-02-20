@@ -1,7 +1,7 @@
 export const COFFEE = [
   {
     id: 0,
-    roastery: 'The Naught Dog',
+    roastery: 'The Naughty Dog',
     country: 'Rwanda',
     farm: 'Tariku',
     process: 'NATURAL',
