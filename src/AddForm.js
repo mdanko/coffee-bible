@@ -8,8 +8,11 @@ import {
   Input,
   Select,
 } from '@chakra-ui/react';
+import { useCoffee } from './context/CoffeeContext';
 
 const AddForm = () => {
+  const { addCoffee } = useCoffee();
+
   return (
     <Formik
       initialValues={{
@@ -22,6 +25,7 @@ const AddForm = () => {
       onSubmit={async (values, actions) => {
         await new Promise(resolve => setTimeout(resolve, 500));
         alert(JSON.stringify(values, null, 2));
+        addCoffee({ ...values, notes: [values.notes] });
         actions.setSubmitting(false);
       }}
     >
@@ -69,9 +73,9 @@ const AddForm = () => {
                   placeholder="Select process type"
                   id="process"
                 >
-                  <option key="WASHED">Washed</option>
-                  <option key="NATURAL">Natural</option>
-                  <option key="HONEY">Honey</option>
+                  <option value="WASHED" label="Washed" />
+                  <option value="NATURAL" label="Natural" />
+                  <option value="HONEY" label="Honey" />
                 </Select>
                 <FormErrorMessage>{form.errors.process}</FormErrorMessage>
               </FormControl>
