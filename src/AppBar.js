@@ -1,6 +1,6 @@
-import { AddIcon } from '@chakra-ui/icons';
-import { IconButton, Stack, Heading, Image, Flex } from '@chakra-ui/react';
+import { Stack, Heading, Image, Flex } from '@chakra-ui/react';
 import React from 'react';
+import AddDialog from './AddDialog';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 const AppBar = () => {
@@ -25,12 +25,7 @@ const AppBar = () => {
       </Stack>
 
       <Stack spacing={4} direction="row" justifySelf="flex-end">
-        <IconButton
-          aria-label="Add coffee"
-          icon={<AddIcon />}
-          variant="outline"
-          colorScheme="orange"
-        />
+        <AddDialog />
         <ColorModeSwitcher />
       </Stack>
     </Flex>
