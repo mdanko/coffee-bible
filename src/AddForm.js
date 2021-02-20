@@ -10,8 +10,16 @@ import {
 } from '@chakra-ui/react';
 import { useCoffee } from './context/CoffeeContext';
 
-const AddForm = () => {
+const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
+
+  const validateRequired = value => {
+    let error;
+    if (!value) {
+      error = 'Required';
+    }
+    return error;
+  };
 
   return (
     <Formik
@@ -24,17 +32,18 @@ const AddForm = () => {
       }}
       onSubmit={async (values, actions) => {
         await new Promise(resolve => setTimeout(resolve, 500));
-        alert(JSON.stringify(values, null, 2));
         addCoffee({ ...values, notes: [values.notes] });
         actions.setSubmitting(false);
+        closeDialog();
       }}
     >
       {props => (
         <Form>
-          <Field key="roastery" name="roastery">
+          <Field key="roastery" name="roastery" validate={validateRequired}>
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.roastery && form.touched.roastery}
+                isRequired
               >
                 <FormLabel htmlFor="roastery">Roastery</FormLabel>
                 <Input {...field} id="roastery" />
@@ -42,10 +51,11 @@ const AddForm = () => {
               </FormControl>
             )}
           </Field>
-          <Field key="country" name="country">
+          <Field key="country" name="country" validate={validateRequired}>
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.country && form.touched.country}
+                isRequired
               >
                 <FormLabel htmlFor="country">Country</FormLabel>
                 <Input {...field} id="country" />
@@ -53,19 +63,23 @@ const AddForm = () => {
               </FormControl>
             )}
           </Field>
-          <Field key="farm" name="farm">
+          <Field key="farm" name="farm" validate={validateRequired}>
             {({ field, form }) => (
-              <FormControl isInvalid={form.errors.farm && form.touched.farm}>
+              <FormControl
+                isInvalid={form.errors.farm && form.touched.farm}
+                isRequired
+              >
                 <FormLabel htmlFor="farm">Farm</FormLabel>
                 <Input {...field} id="farm" />
                 <FormErrorMessage>{form.errors.farm}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
-          <Field key="process" name="process">
+          <Field key="process" name="process" validate={validateRequired}>
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.process && form.touched.process}
+                isRequired
               >
                 <FormLabel htmlFor="process">Process</FormLabel>
                 <Select

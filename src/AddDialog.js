@@ -31,7 +31,7 @@ const AddDialog = () => {
           <ModalCloseButton />
 
           <ModalBody>
-            <AddForm />
+            <AddForm closeDialog={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>
