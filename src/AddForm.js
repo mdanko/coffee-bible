@@ -42,7 +42,7 @@ const AddForm = ({ closeDialog }) => {
       }}
       onSubmit={async (values, actions) => {
         await new Promise(resolve => setTimeout(resolve, 500));
-        addCoffee({ ...values, notes: [values.notes] });
+        addCoffee({ ...values });
         actions.setSubmitting(false);
         closeDialog();
       }}
