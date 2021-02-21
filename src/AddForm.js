@@ -14,6 +14,7 @@ import {
   TagLabel,
   WrapItem,
   Wrap,
+  TagCloseButton,
 } from '@chakra-ui/react';
 import { useCoffee } from './context/CoffeeContext';
 import { AddIcon } from '@chakra-ui/icons';
@@ -107,7 +108,7 @@ const AddForm = ({ closeDialog }) => {
           <FieldArray
             key="notes"
             name="notes"
-            render={({ push }) => (
+            render={({ push, remove }) => (
               <FormControl>
                 <FormLabel htmlFor="process">Notes</FormLabel>
                 <InputGroup name="notes" id="notes">
@@ -136,6 +137,13 @@ const AddForm = ({ closeDialog }) => {
                         colorScheme="orange"
                       >
                         <TagLabel>{tag}</TagLabel>
+                        <TagCloseButton
+                          onClick={() =>
+                            remove(
+                              props.values.notes.findIndex(item => item === tag)
+                            )
+                          }
+                        />
                       </Tag>
                     </WrapItem>
                   ))}
