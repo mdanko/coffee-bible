@@ -1,11 +1,20 @@
-import { Stack, Heading, Image, Flex } from '@chakra-ui/react';
+import {
+  Stack,
+  Heading,
+  Image,
+  Flex,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import AddDialog from './AddDialog';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 const AppBar = () => {
-  const handleScroll = () => setIsScrolled(window.pageYOffset > 100);
+  const bg = useColorModeValue('orange.100', 'rgb(26, 32, 44)');
+  const boxShadow = useColorModeValue('md', 'dark-lg');
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleScroll = () => setIsScrolled(window.pageYOffset > 0);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -24,8 +33,8 @@ const AppBar = () => {
       top="0"
       left="0"
       width="100%"
-      boxShadow={isScrolled && 'md'}
-      backgroundColor={isScrolled && 'orange.50'}
+      boxShadow={isScrolled && boxShadow}
+      bg={isScrolled && bg}
       transition="0.7s"
     >
       <Stack direction="row">
