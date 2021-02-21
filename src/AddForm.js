@@ -1,17 +1,26 @@
-import React from 'react';
-import { Field, Form, Formik } from 'formik';
+import React, { useRef } from 'react';
+import { Field, FieldArray, Form, Formik } from 'formik';
 import {
   Button,
+  IconButton,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
+  InputGroup,
+  InputRightElement,
   Select,
+  Tag,
+  TagLabel,
+  WrapItem,
+  Wrap,
 } from '@chakra-ui/react';
 import { useCoffee } from './context/CoffeeContext';
+import { AddIcon } from '@chakra-ui/icons';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
+  const notesInputRef = useRef(null);
 
   const validateRequired = value => {
     let error;
@@ -28,7 +37,7 @@ const AddForm = ({ closeDialog }) => {
         country: '',
         farm: '',
         process: '',
-        notes: '',
+        notes: [],
       }}
       onSubmit={async (values, actions) => {
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -95,15 +104,45 @@ const AddForm = ({ closeDialog }) => {
               </FormControl>
             )}
           </Field>
-          <Field key="notes" name="notes">
-            {({ field, form }) => (
-              <FormControl isInvalid={form.errors.notes && form.touched.notes}>
-                <FormLabel htmlFor="notes">Notes</FormLabel>
-                <Input {...field} id="notes" />
-                <FormErrorMessage>{form.errors.notes}</FormErrorMessage>
+          <FieldArray
+            key="notes"
+            name="notes"
+            render={({ push }) => (
+              <FormControl>
+                <FormLabel htmlFor="process">Notes</FormLabel>
+                <InputGroup name="notes" id="notes">
+                  <Input ref={notesInputRef} />
+                  <InputRightElement>
+                    <IconButton
+                      aria-label="Add coffee"
+                      icon={<AddIcon />}
+                      variant="ghost"
+                      colorScheme="orange"
+                      onClick={() => {
+                        push(notesInputRef.current.value);
+                        notesInputRef.current.value = '';
+                      }}
+                    />
+                  </InputRightElement>
+                </InputGroup>
+                <Wrap mt={4} spacing={4}>
+                  {props.values.notes.map(tag => (
+                    <WrapItem>
+                      <Tag
+                        size="lg"
+                        key={tag}
+                        borderRadius="full"
+                        variant="solid"
+                        colorScheme="orange"
+                      >
+                        <TagLabel>{tag}</TagLabel>
+                      </Tag>
+                    </WrapItem>
+                  ))}
+                </Wrap>
               </FormControl>
             )}
-          </Field>
+          />
           <Button
             mt={8}
             mb={4}
