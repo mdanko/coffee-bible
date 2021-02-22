@@ -7,7 +7,7 @@ const Main = () => {
   const { coffeeData } = useCoffee();
 
   return (
-    <Grid p={3}>
+    <Grid p={3} mt={{ base: 16, md: 0 }}>
       <SimpleGrid minChildWidth={{ base: '300px', md: '400px' }} spacing="80px">
         {coffeeData.map(item => (
           <Card

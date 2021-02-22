@@ -10,7 +10,7 @@ import AddDialog from './AddDialog';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 const AppBar = () => {
-  const bg = useColorModeValue('orange.100', 'rgb(26, 32, 44)');
+  const bg = useColorModeValue('white', 'rgb(26, 32, 44)');
   const boxShadow = useColorModeValue('md', 'dark-lg');
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -29,13 +29,14 @@ const AppBar = () => {
       align="center"
       justify="space-between"
       padding={{ base: 2, md: 8 }}
-      position={isScrolled && 'fixed'}
+      position={{ base: 'fixed', md: isScrolled ? 'fixed' : 'static' }}
       top="0"
       left="0"
       width="100%"
-      boxShadow={isScrolled && boxShadow}
-      bg={isScrolled && bg}
-      transition="0.7s"
+      boxShadow={{ base: boxShadow, md: isScrolled ? boxShadow : 'none' }}
+      height={{ base: '60px', md: '100px' }}
+      bg={bg}
+      transition="0.5s"
     >
       <Stack direction="row">
         <Image
