@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import {
   Button,
@@ -21,7 +21,8 @@ import { AddIcon } from '@chakra-ui/icons';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
-  const notesInputRef = useRef(null);
+  const [note, setNote] = useState('');
+  const getIsAddNoteDisabled = notes => note === '' || notes.includes(note);
 
   const validateRequired = value => {
     let error;
@@ -112,16 +113,17 @@ const AddForm = ({ closeDialog }) => {
               <FormControl>
                 <FormLabel htmlFor="process">Notes</FormLabel>
                 <InputGroup name="notes" id="notes">
-                  <Input ref={notesInputRef} />
+                  <Input value={note} onChange={e => setNote(e.target.value)} />
                   <InputRightElement>
                     <IconButton
-                      aria-label="Add coffee"
+                      aria-label="Add note"
                       icon={<AddIcon />}
                       variant="ghost"
                       colorScheme="orange"
+                      isDisabled={getIsAddNoteDisabled(props.values.notes)}
                       onClick={() => {
-                        push(notesInputRef.current.value);
-                        notesInputRef.current.value = '';
+                        push(note);
+                        setNote('');
                       }}
                     />
                   </InputRightElement>
