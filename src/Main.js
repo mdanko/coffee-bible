@@ -18,6 +18,7 @@ const Main = () => {
             iconTooltip={PROCESS[item.process].text}
             icon={PROCESS[item.process].icon}
             tags={item.notes}
+            rating={item.rating}
           />
         ))}
       </SimpleGrid>

@@ -1,3 +1,4 @@
+import { StarIcon } from '@chakra-ui/icons';
 import {
   Box,
   Text,
@@ -11,7 +12,7 @@ import {
   Tooltip,
 } from '@chakra-ui/react';
 
-const Card = ({ image, title, subtitle, iconTooltip, icon, tags }) => {
+const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
   const justifySelfCard = useBreakpointValue({
     base: 'start',
     sm: 'center',
@@ -22,7 +23,7 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags }) => {
       p="10px"
       m="10px"
       maxW="350px"
-      maxH="520px"
+      maxH="550px"
       borderWidth="1px"
       rounded="md"
       boxShadow="md"
@@ -31,10 +32,22 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags }) => {
       fontFamily="Consolas"
       justifySelf={justifySelfCard}
     >
+      <Box d="flex" mt={2} mb={2} alignItems="center" float="right">
+        {Array(5)
+          .fill('')
+          .map((_, i) => (
+            <StarIcon
+              key={i}
+              boxSize={6}
+              color={i < rating ? 'orange.200' : 'gray.300'}
+            />
+          ))}
+      </Box>
       <Image
+        d="inline-block"
         rounded="0.5rem"
         src={image}
-        alt={`${title} ${subtitle}`}
+        alt={`${title} ${subtitle} image`}
         bg="white"
       />
       <Heading>{title}</Heading>
