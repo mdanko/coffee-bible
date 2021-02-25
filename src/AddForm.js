@@ -15,13 +15,15 @@ import {
   WrapItem,
   Wrap,
   TagCloseButton,
+  Box,
 } from '@chakra-ui/react';
 import { useCoffee } from './context/CoffeeContext';
-import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, StarIcon } from '@chakra-ui/icons';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
   const [note, setNote] = useState('');
+  const [rating, setRating] = useState(0);
   const getIsAddNoteDisabled = notes => note === '' || notes.includes(note);
 
   const validateRequired = value => {
@@ -40,6 +42,7 @@ const AddForm = ({ closeDialog }) => {
         farm: '',
         process: '',
         notes: [],
+        rating: 0,
       }}
       onSubmit={async (values, actions) => {
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -153,6 +156,32 @@ const AddForm = ({ closeDialog }) => {
               </FormControl>
             )}
           />
+          <Field key="rating" name="rating" validate={validateRequired}>
+            {({ field, form }) => (
+              <FormControl
+                isInvalid={form.errors.rating && form.touched.rating}
+                isRequired
+              >
+                <FormLabel htmlFor="rating">Rating</FormLabel>
+                <Box d="flex" alignItems="center">
+                  {Array(5)
+                    .fill('')
+                    .map((_, i) => (
+                      <IconButton
+                        key={i}
+                        variant="ghost"
+                        colorScheme="orange"
+                        aria-label={`Rate ${i}`}
+                        size="md"
+                        icon={<StarIcon />}
+                        color={i <= field.value ? 'orange.200' : 'gray.300'}
+                        onClick={() => props.setFieldValue('rating', i)}
+                      />
+                    ))}
+                </Box>
+              </FormControl>
+            )}
+          </Field>
           <Button
             mt={8}
             mb={4}
