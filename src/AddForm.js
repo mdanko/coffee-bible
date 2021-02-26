@@ -22,9 +22,9 @@ import { AddIcon, StarIcon } from '@chakra-ui/icons';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
-  const [note, setNote] = useState('');
-  const [rating, setRating] = useState(0);
-  const getIsAddNoteDisabled = notes => note === '' || notes.includes(note);
+  const [flavourNote, setFlavourNote] = useState('');
+  const getIsAddNoteDisabled = flavourNotes =>
+    flavourNote === '' || flavourNotes.includes(flavourNote);
 
   const validateRequired = value => {
     let error;
@@ -41,7 +41,7 @@ const AddForm = ({ closeDialog }) => {
         country: '',
         farm: '',
         process: '',
-        notes: [],
+        flavourNotes: [],
         rating: 0,
       }}
       onSubmit={async (values, actions) => {
@@ -110,29 +110,34 @@ const AddForm = ({ closeDialog }) => {
             )}
           </Field>
           <FieldArray
-            key="notes"
-            name="notes"
+            key="flavourNotes"
+            name="flavourNotes"
             render={({ push, remove }) => (
               <FormControl>
-                <FormLabel htmlFor="process">Notes</FormLabel>
-                <InputGroup name="notes" id="notes">
-                  <Input value={note} onChange={e => setNote(e.target.value)} />
+                <FormLabel htmlFor="flavourNotes">Flavour Notes</FormLabel>
+                <InputGroup name="flavourNotes" id="flavourNotes">
+                  <Input
+                    value={flavourNote}
+                    onChange={e => setFlavourNote(e.target.value)}
+                  />
                   <InputRightElement>
                     <IconButton
-                      aria-label="Add note"
+                      aria-label="Add flavour note"
                       icon={<AddIcon />}
                       variant="ghost"
                       colorScheme="orange"
-                      isDisabled={getIsAddNoteDisabled(props.values.notes)}
+                      isDisabled={getIsAddNoteDisabled(
+                        props.values.flavourNotes
+                      )}
                       onClick={() => {
-                        push(note);
-                        setNote('');
+                        push(flavourNote);
+                        setFlavourNote('');
                       }}
                     />
                   </InputRightElement>
                 </InputGroup>
                 <Wrap mt={4} spacing={4}>
-                  {props.values.notes.map(tag => (
+                  {props.values.flavourNotes.map(tag => (
                     <WrapItem>
                       <Tag
                         size="lg"
@@ -145,7 +150,9 @@ const AddForm = ({ closeDialog }) => {
                         <TagCloseButton
                           onClick={() =>
                             remove(
-                              props.values.notes.findIndex(item => item === tag)
+                              props.values.flavourNotes.findIndex(
+                                item => item === tag
+                              )
                             )
                           }
                         />
@@ -171,7 +178,7 @@ const AddForm = ({ closeDialog }) => {
                         key={i}
                         variant="ghost"
                         colorScheme="orange"
-                        aria-label={`Rate ${i}`}
+                        aria-label={`${i} Star`}
                         size="md"
                         icon={<StarIcon />}
                         color={i <= field.value ? 'orange.200' : 'gray.300'}

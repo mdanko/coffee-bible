@@ -17,7 +17,7 @@ const Main = () => {
             subtitle={`${item.country} ${item.farm}`}
             iconTooltip={PROCESS[item.process].text}
             icon={PROCESS[item.process].icon}
-            tags={item.notes}
+            tags={item.flavourNotes}
             rating={item.rating}
           />
         ))}
