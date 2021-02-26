@@ -43,6 +43,7 @@ const AddForm = ({ closeDialog }) => {
         process: '',
         flavourNotes: [],
         rating: 0,
+        image: '',
       }}
       onSubmit={async (values, actions) => {
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -186,6 +187,24 @@ const AddForm = ({ closeDialog }) => {
                       />
                     ))}
                 </Box>
+              </FormControl>
+            )}
+          </Field>
+          <Field key="image" name="image">
+            {() => (
+              <FormControl>
+                <FormLabel htmlFor="image">Image</FormLabel>
+                <input
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  onChange={e =>
+                    props.setFieldValue(
+                      'image',
+                      URL.createObjectURL(e.target.files[0])
+                    )
+                  }
+                />
               </FormControl>
             )}
           </Field>
