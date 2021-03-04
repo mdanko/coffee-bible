@@ -49,6 +49,8 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
         src={image}
         alt={`${title} ${subtitle} image`}
         bg="white"
+        h="300px"
+        objectFit="cover"
       />
       <Heading>{title}</Heading>
       <Text fontSize="2xl">{subtitle}</Text>
