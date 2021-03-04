@@ -3,7 +3,6 @@ import {
   Box,
   Text,
   Image,
-  useBreakpointValue,
   Heading,
   Tag,
   TagLabel,
@@ -13,11 +12,6 @@ import {
 } from '@chakra-ui/react';
 
 const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
-  const justifySelfCard = useBreakpointValue({
-    base: 'start',
-    sm: 'center',
-  });
-
   return (
     <Box
       p="10px"
@@ -30,7 +24,7 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
       fontSize="2rem"
       textAlign="center"
       fontFamily="Consolas"
-      justifySelf={justifySelfCard}
+      justifySelf="center"
       d="flex"
       flexDirection="column"
     >
