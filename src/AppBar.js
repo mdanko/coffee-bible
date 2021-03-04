@@ -46,7 +46,7 @@ const AppBar = () => {
           src="https://cdn.dribbble.com/users/1274247/screenshots/6149307/artboard_1_copy-1.jpg"
           alt="Coffee Bible logo"
         />
-        <Heading fontFamily="ONEDAY" display={{ base: 'none', md: 'block' }}>
+        <Heading fontFamily="ONEDAY" display={{ base: 'none', sm: 'block' }}>
           Coffee Bible
         </Heading>
       </Stack>
