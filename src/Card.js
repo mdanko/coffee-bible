@@ -28,7 +28,7 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
       d="flex"
       flexDirection="column"
     >
-      <Box d="flex" mt={2} mb={2} alignItems="center" float="right">
+      <Box d="flex" mt={2} mb={2} alignItems="center" alignSelf="flex-end">
         {Array(5)
           .fill('')
           .map((_, i) => (
