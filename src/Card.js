@@ -31,6 +31,8 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
       textAlign="center"
       fontFamily="Consolas"
       justifySelf={justifySelfCard}
+      d="flex"
+      flexDirection="column"
     >
       <Box d="flex" mt={2} mb={2} alignItems="center" float="right">
         {Array(5)
@@ -50,6 +52,7 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
         alt={`${title} ${subtitle} image`}
         bg="white"
         h="300px"
+        w="300px"
         objectFit="cover"
       />
       <Heading>{title}</Heading>
