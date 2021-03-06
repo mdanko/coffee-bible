@@ -45,17 +45,17 @@ const Card = ({ image, title, subtitle, process, tags, rating }) => {
           icon={<EditIcon />}
           onClick={() => setIsEditing(!isEditing)}
         />
-        <Editable isEditing={isEditing} defaultValue={rating}>
-          {props => (
-            <>
-              <EditableRating
-                value={props.value}
-                onChange={newValue => props.setValue(newValue)}
-              />
-              <Rating value={props.value} />
-            </>
+        <Editable
+          isEditing={isEditing}
+          defaultValue={rating}
+          editableChildren={props => (
+            <EditableRating
+              value={props.value}
+              onChange={newValue => props.setValue(newValue)}
+            />
           )}
-        </Editable>
+          displayChildren={props => <Rating value={props.value} />}
+        />
       </Flex>
       <Image
         d="inline-block"
@@ -67,46 +67,38 @@ const Card = ({ image, title, subtitle, process, tags, rating }) => {
         w="300px"
         objectFit="cover"
       />
-      <Editable isEditing={isEditing} defaultValue={title}>
-        {props => (
-          <>
-            <Input {...props} />
-            <Heading>{props.value}</Heading>
-          </>
+      <Editable
+        isEditing={isEditing}
+        defaultValue={title}
+        editableChildren={props => <Input {...props} />}
+        displayChildren={props => <Heading>{props.value}</Heading>}
+      />
+      <Editable
+        isEditing={isEditing}
+        defaultValue={subtitle}
+        editableChildren={props => <Input {...props} />}
+        displayChildren={props => <Text fontSize="2xl">{props.value}</Text>}
+      />
+      <Editable
+        isEditing={isEditing}
+        defaultValue={process}
+        editableChildren={props => <EditableProcess {...props} />}
+        displayChildren={props => <Process {...props} />}
+      />
+      <Editable
+        isEditing={isEditing}
+        defaultValue={tags}
+        editableChildren={props => (
+          <EditableFlavourNotes
+            flavourNotes={props.value}
+            onAdd={newValue => props.setValue(props.value.concat(newValue))}
+            onRemove={removedValue =>
+              props.setValue(props.value.filter(v => v !== removedValue))
+            }
+          />
         )}
-      </Editable>
-      <Editable isEditing={isEditing} defaultValue={subtitle}>
-        {props => (
-          <>
-            <Input {...props} />
-            <Text fontSize="2xl">{props.value}</Text>
-          </>
-        )}
-      </Editable>
-
-      <Editable isEditing={isEditing} defaultValue={process}>
-        {props => (
-          <>
-            <EditableProcess {...props} />
-            <Process {...props} />
-          </>
-        )}
-      </Editable>
-
-      <Editable isEditing={isEditing} defaultValue={tags}>
-        {props => (
-          <>
-            <EditableFlavourNotes
-              flavourNotes={props.value}
-              onAdd={newValue => props.setValue(props.value.concat(newValue))}
-              onRemove={removedValue =>
-                props.setValue(props.value.filter(v => v !== removedValue))
-              }
-            />
-            <FlavourNotes tags={props.value} />
-          </>
-        )}
-      </Editable>
+        displayChildren={props => <FlavourNotes tags={props.value} />}
+      />
     </Box>
   );
 };

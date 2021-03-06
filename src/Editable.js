@@ -1,14 +1,21 @@
 import { useState } from 'react';
 
-const Editable = ({ isEditing, defaultValue, ...props }) => {
+const Editable = ({
+  isEditing,
+  defaultValue,
+  editableChildren,
+  displayChildren,
+}) => {
   const [value, setValue] = useState(defaultValue);
-
   const onChange = event => setValue(event.target.value);
-  const children = props.children({ value, onChange, setValue });
-  const editableChild = children.props.children[0];
-  const displayChild = children.props.children[1];
 
-  return <>{isEditing ? editableChild : displayChild}</>;
+  return (
+    <>
+      {isEditing
+        ? editableChildren({ value, onChange, setValue })
+        : displayChildren({ value })}
+    </>
+  );
 };
 
 export default Editable;
