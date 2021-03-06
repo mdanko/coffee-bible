@@ -5,11 +5,11 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
-  Select,
 } from '@chakra-ui/react';
 import { useCoffee } from './context/CoffeeContext';
 import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
 import EditableRating from './components/rating/EditableRating';
+import EditableProcess from './components/process/EditableProcess';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
@@ -85,15 +85,7 @@ const AddForm = ({ closeDialog }) => {
                 isRequired
               >
                 <FormLabel htmlFor="process">Process</FormLabel>
-                <Select
-                  {...field}
-                  placeholder="Select process type"
-                  id="process"
-                >
-                  <option value="WASHED" label="Washed" />
-                  <option value="NATURAL" label="Natural" />
-                  <option value="HONEY" label="Honey" />
-                </Select>
+                <EditableProcess {...field} />
                 <FormErrorMessage>{form.errors.process}</FormErrorMessage>
               </FormControl>
             )}
