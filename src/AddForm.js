@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import {
   Button,
@@ -7,24 +6,15 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
-  InputGroup,
-  InputRightElement,
   Select,
-  Tag,
-  TagLabel,
-  WrapItem,
-  Wrap,
-  TagCloseButton,
   Box,
 } from '@chakra-ui/react';
 import { useCoffee } from './context/CoffeeContext';
-import { AddIcon, StarIcon } from '@chakra-ui/icons';
+import { StarIcon } from '@chakra-ui/icons';
+import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
-  const [flavourNote, setFlavourNote] = useState('');
-  const getIsAddNoteDisabled = flavourNotes =>
-    flavourNote === '' || flavourNotes.includes(flavourNote);
 
   const validateRequired = value => {
     let error;
@@ -116,51 +106,19 @@ const AddForm = ({ closeDialog }) => {
             render={({ push, remove }) => (
               <FormControl>
                 <FormLabel htmlFor="flavourNotes">Flavour Notes</FormLabel>
-                <InputGroup name="flavourNotes" id="flavourNotes">
-                  <Input
-                    value={flavourNote}
-                    onChange={e => setFlavourNote(e.target.value)}
-                  />
-                  <InputRightElement>
-                    <IconButton
-                      aria-label="Add flavour note"
-                      icon={<AddIcon />}
-                      variant="ghost"
-                      colorScheme="orange"
-                      isDisabled={getIsAddNoteDisabled(
-                        props.values.flavourNotes
-                      )}
-                      onClick={() => {
-                        push(flavourNote);
-                        setFlavourNote('');
-                      }}
-                    />
-                  </InputRightElement>
-                </InputGroup>
-                <Wrap mt={4} spacing={4}>
-                  {props.values.flavourNotes.map(tag => (
-                    <WrapItem>
-                      <Tag
-                        size="lg"
-                        key={tag}
-                        borderRadius="full"
-                        variant="solid"
-                        colorScheme="orange"
-                      >
-                        <TagLabel>{tag}</TagLabel>
-                        <TagCloseButton
-                          onClick={() =>
-                            remove(
-                              props.values.flavourNotes.findIndex(
-                                item => item === tag
-                              )
-                            )
-                          }
-                        />
-                      </Tag>
-                    </WrapItem>
-                  ))}
-                </Wrap>
+                <EditableFlavourNotes
+                  flavourNotes={props.values.flavourNotes}
+                  onAdd={value => {
+                    push(value);
+                  }}
+                  onRemove={value =>
+                    remove(
+                      props.values.flavourNotes.findIndex(
+                        item => item === value
+                      )
+                    )
+                  }
+                />
               </FormControl>
             )}
           />
