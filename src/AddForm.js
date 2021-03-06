@@ -1,17 +1,15 @@
 import { Field, FieldArray, Form, Formik } from 'formik';
 import {
   Button,
-  IconButton,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
   Select,
-  Box,
 } from '@chakra-ui/react';
 import { useCoffee } from './context/CoffeeContext';
-import { StarIcon } from '@chakra-ui/icons';
 import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
+import EditableRating from './components/rating/EditableRating';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
@@ -129,22 +127,10 @@ const AddForm = ({ closeDialog }) => {
                 isRequired
               >
                 <FormLabel htmlFor="rating">Rating</FormLabel>
-                <Box d="flex" alignItems="center">
-                  {Array(5)
-                    .fill('')
-                    .map((_, i) => (
-                      <IconButton
-                        key={i}
-                        variant="ghost"
-                        colorScheme="orange"
-                        aria-label={`${i} Star`}
-                        size="md"
-                        icon={<StarIcon />}
-                        color={i <= field.value ? 'orange.200' : 'gray.300'}
-                        onClick={() => props.setFieldValue('rating', i)}
-                      />
-                    ))}
-                </Box>
+                <EditableRating
+                  value={field.value}
+                  onChange={value => props.setFieldValue('rating', value)}
+                />
               </FormControl>
             )}
           </Field>
