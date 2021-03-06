@@ -15,8 +15,7 @@ const Main = () => {
             image={item.image}
             title={item.roastery}
             subtitle={`${item.country} ${item.farm}`}
-            iconTooltip={PROCESS[item.process].text}
-            icon={PROCESS[item.process].icon}
+            process={item.process}
             tags={item.flavourNotes}
             rating={item.rating}
           />

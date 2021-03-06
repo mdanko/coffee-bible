@@ -37,6 +37,7 @@ const AppBar = () => {
       height={{ base: '60px', md: '100px' }}
       bg={bg}
       transition="0.5s"
+      zIndex="1"
     >
       <Stack direction="row">
         <Image

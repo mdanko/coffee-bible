@@ -1,23 +1,31 @@
-import { StarIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
+import { EditIcon } from '@chakra-ui/icons';
 import {
   Box,
   Text,
   Image,
   Heading,
-  Tag,
-  TagLabel,
-  HStack,
-  Icon,
-  Tooltip,
+  Flex,
+  IconButton,
+  Input,
 } from '@chakra-ui/react';
+import Editable from './Editable';
+import FlavourNotes from './components/flavourNotes/FlavourNotes';
+import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
+import Rating from './components/rating/Rating';
+import EditableRating from './components/rating/EditableRating';
+import Process from './components/process/Process';
+import EditableProcess from './components/process/EditableProcess';
 
-const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
+const Card = ({ image, title, subtitle, process, tags, rating }) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <Box
       p="10px"
       m="10px"
       maxW="350px"
-      maxH="550px"
+      maxH={isEditing ? '650px' : '550px'}
       borderWidth="1px"
       rounded="md"
       boxShadow="md"
@@ -28,17 +36,27 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
       d="flex"
       flexDirection="column"
     >
-      <Box d="flex" mt={2} mb={2} alignItems="center" alignSelf="flex-end">
-        {Array(5)
-          .fill('')
-          .map((_, i) => (
-            <StarIcon
-              key={i}
-              boxSize={6}
-              color={i < rating ? 'orange.200' : 'gray.300'}
-            />
-          ))}
-      </Box>
+      <Flex justifyContent="space-between">
+        <IconButton
+          aria-label="Search database"
+          size="lg"
+          variant={isEditing ? 'solid' : 'ghost'}
+          colorScheme="orange"
+          icon={<EditIcon />}
+          onClick={() => setIsEditing(!isEditing)}
+        />
+        <Editable isEditing={isEditing} defaultValue={rating}>
+          {props => (
+            <>
+              <EditableRating
+                value={props.value}
+                onChange={newValue => props.setValue(newValue)}
+              />
+              <Rating value={props.value} />
+            </>
+          )}
+        </Editable>
+      </Flex>
       <Image
         d="inline-block"
         rounded="0.5rem"
@@ -49,26 +67,46 @@ const Card = ({ image, title, subtitle, iconTooltip, icon, tags, rating }) => {
         w="300px"
         objectFit="cover"
       />
-      <Heading>{title}</Heading>
-      <Text fontSize="2xl">{subtitle}</Text>
-      <Tooltip label={iconTooltip}>
-        <span>
-          <Icon as={icon} />
-        </span>
-      </Tooltip>
-      <HStack m="10px" spacing="10px">
-        {tags.map(tag => (
-          <Tag
-            size="md"
-            key={tag}
-            borderRadius="full"
-            variant="subtle"
-            colorScheme="orange"
-          >
-            <TagLabel>{tag}</TagLabel>
-          </Tag>
-        ))}
-      </HStack>
+      <Editable isEditing={isEditing} defaultValue={title}>
+        {props => (
+          <>
+            <Input {...props} />
+            <Heading>{props.value}</Heading>
+          </>
+        )}
+      </Editable>
+      <Editable isEditing={isEditing} defaultValue={subtitle}>
+        {props => (
+          <>
+            <Input {...props} />
+            <Text fontSize="2xl">{props.value}</Text>
+          </>
+        )}
+      </Editable>
+
+      <Editable isEditing={isEditing} defaultValue={process}>
+        {props => (
+          <>
+            <EditableProcess {...props} />
+            <Process {...props} />
+          </>
+        )}
+      </Editable>
+
+      <Editable isEditing={isEditing} defaultValue={tags}>
+        {props => (
+          <>
+            <EditableFlavourNotes
+              flavourNotes={props.value}
+              onAdd={newValue => props.setValue(props.value.concat(newValue))}
+              onRemove={removedValue =>
+                props.setValue(props.value.filter(v => v !== removedValue))
+              }
+            />
+            <FlavourNotes tags={props.value} />
+          </>
+        )}
+      </Editable>
     </Box>
   );
 };
