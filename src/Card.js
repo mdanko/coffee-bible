@@ -1,14 +1,6 @@
 import { useState } from 'react';
 import { EditIcon } from '@chakra-ui/icons';
-import {
-  Box,
-  Text,
-  Image,
-  Heading,
-  Flex,
-  IconButton,
-  Input,
-} from '@chakra-ui/react';
+import { Box, Text, Heading, Flex, IconButton, Input } from '@chakra-ui/react';
 import Editable from './Editable';
 import FlavourNotes from './components/flavourNotes/FlavourNotes';
 import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
@@ -16,6 +8,8 @@ import Rating from './components/rating/Rating';
 import EditableRating from './components/rating/EditableRating';
 import Process from './components/process/Process';
 import EditableProcess from './components/process/EditableProcess';
+import Image from './components/image/Image';
+import EditableImage from './components/image/EditableImage';
 
 const Card = ({ image, title, subtitle, process, tags, rating }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -25,7 +19,7 @@ const Card = ({ image, title, subtitle, process, tags, rating }) => {
       p="10px"
       m="10px"
       maxW="350px"
-      maxH={isEditing ? '650px' : '550px'}
+      maxH="550px"
       borderWidth="1px"
       rounded="md"
       boxShadow="md"
@@ -57,15 +51,16 @@ const Card = ({ image, title, subtitle, process, tags, rating }) => {
           displayChildren={props => <Rating value={props.value} />}
         />
       </Flex>
-      <Image
-        d="inline-block"
-        rounded="0.5rem"
-        src={image}
-        alt={`${title} ${subtitle} image`}
-        bg="white"
-        h="300px"
-        w="300px"
-        objectFit="cover"
+      <Editable
+        isEditing={isEditing}
+        defaultValue={image}
+        editableChildren={props => (
+          <EditableImage
+            value={props.value}
+            onChange={newValue => props.setValue(newValue)}
+          />
+        )}
+        displayChildren={props => <Image src={props.value} />}
       />
       <Editable
         isEditing={isEditing}
