@@ -1,13 +1,19 @@
-import { Input } from '@chakra-ui/input';
+import { useRef } from 'react';
+import UploadImageInput from './UploadImageInput';
 
-const UploadImage = ({ onChange }) => {
+const UploadImage = ({ onChange, ...props }) => {
+  const fileInput = useRef(null);
+  debugger;
   return (
-    <Input
-      type="file"
-      accept="image/*;capture=camera"
-      onChange={onChange}
-      p="5px"
-    />
+    <>
+      <label htmlFor="myInput">{props.children()}</label>
+      <UploadImageInput
+        id="myInput"
+        onChange={onChange}
+        ref={fileInput}
+        display="none"
+      />
+    </>
   );
 };
 

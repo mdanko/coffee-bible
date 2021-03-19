@@ -10,7 +10,7 @@ import { useCoffee } from './context/CoffeeContext';
 import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
 import EditableRating from './components/rating/EditableRating';
 import EditableProcess from './components/process/EditableProcess';
-import UploadImage from './components/image/UploadImage';
+import UploadImageInput from './components/image/UploadImageInput';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
@@ -131,7 +131,7 @@ const AddForm = ({ closeDialog }) => {
             {() => (
               <FormControl>
                 <FormLabel htmlFor="image">Image</FormLabel>
-                <UploadImage
+                <UploadImageInput
                   onChange={e =>
                     props.setFieldValue(
                       'image',
