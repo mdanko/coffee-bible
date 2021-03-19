@@ -10,7 +10,7 @@ const Rating = ({ value }) => {
           <StarIcon
             key={i}
             boxSize={6}
-            color={i <= value ? 'orange.200' : 'gray.300'}
+            color={i < value ? 'orange.200' : 'gray.300'}
           />
         ))}
     </Box>

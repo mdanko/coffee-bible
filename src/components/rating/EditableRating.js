@@ -12,11 +12,11 @@ const Rating = ({ value, onChange }) => {
             key={i}
             variant="ghost"
             colorScheme="orange"
-            aria-label={`${i} Star`}
+            aria-label={`${i + 1} Star`}
             size="md"
             icon={<StarIcon />}
-            color={i <= value ? 'orange.200' : 'gray.300'}
-            onClick={() => onChange(i)}
+            color={i < value ? 'orange.200' : 'gray.300'}
+            onClick={() => onChange(i + 1)}
           />
         ))}
     </Box>
