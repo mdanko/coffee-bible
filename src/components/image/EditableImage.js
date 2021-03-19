@@ -10,7 +10,6 @@ import UploadImage from './UploadImage';
 const EditableImage = ({ value, onChange }) => {
   const [src, setSrc] = useState(value);
   const bg = useColorModeValue('white', 'gray.800');
-  const bgHover = useColorModeValue('gray.200', 'rgba(255, 255, 255, 0.16)');
 
   useEffect(() => {
     onChange && onChange(src);

@@ -3,7 +3,7 @@ import UploadImageInput from './UploadImageInput';
 
 const UploadImage = ({ onChange, ...props }) => {
   const fileInput = useRef(null);
-  debugger;
+
   return (
     <>
       <label htmlFor="myInput">{props.children()}</label>

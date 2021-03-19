@@ -11,6 +11,7 @@ import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes
 import EditableRating from './components/rating/EditableRating';
 import EditableProcess from './components/process/EditableProcess';
 import UploadImageInput from './components/image/UploadImageInput';
+import EditableUnusualFlavour from './components/unusualFlavour/EditableUnusualFlavour';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
@@ -33,6 +34,7 @@ const AddForm = ({ closeDialog }) => {
         flavourNotes: [],
         rating: 0,
         image: '',
+        isUnusual: false,
       }}
       onSubmit={async (values, actions) => {
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -113,6 +115,17 @@ const AddForm = ({ closeDialog }) => {
               </FormControl>
             )}
           />
+          <Field key="unusualFlavor" name="unusualFlavor">
+            {({ field }) => (
+              <FormControl>
+                <FormLabel htmlFor="unusualFlavor">Unusual Flavor</FormLabel>
+                <EditableUnusualFlavour
+                  value={field.value}
+                  onChange={value => props.setFieldValue('isUnusual', value)}
+                />
+              </FormControl>
+            )}
+          </Field>
           <Field key="rating" name="rating" validate={validateRequired}>
             {({ field, form }) => (
               <FormControl

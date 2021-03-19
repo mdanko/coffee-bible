@@ -10,7 +10,8 @@ import Process from './components/process/Process';
 import EditableProcess from './components/process/EditableProcess';
 import Image from './components/image/Image';
 import EditableImage from './components/image/EditableImage';
-import HotFlavour from './components/hotFlavour/HotFlavour';
+import UnusualFlavour from './components/unusualFlavour/UnusualFlavour';
+import EditableUnusualFlavour from './components/unusualFlavour/EditableUnusualFlavour';
 
 const Card = ({ image, title, subtitle, process, tags, rating, isUnusual }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -53,7 +54,17 @@ const Card = ({ image, title, subtitle, process, tags, rating, isUnusual }) => {
           displayChildren={props => <Rating value={props.value} />}
         />
       </Flex>
-      {isUnusual && <HotFlavour />}
+      <Editable
+        isEditing={isEditing}
+        defaultValue={isUnusual}
+        editableChildren={props => (
+          <EditableUnusualFlavour
+            {...props}
+            onChange={newValue => props.setValue(newValue)}
+          />
+        )}
+        displayChildren={props => <>{props.value && <UnusualFlavour />}</>}
+      />
       <Editable
         isEditing={isEditing}
         defaultValue={image}

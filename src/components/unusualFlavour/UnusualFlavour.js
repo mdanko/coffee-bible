@@ -1,6 +1,6 @@
 import { Tag, TagLabel } from '@chakra-ui/tag';
 
-const HotFlavour = () => {
+const UnusualFlavour = () => {
   return (
     <Tag
       bgColor="purple.300"
@@ -18,4 +18,4 @@ const HotFlavour = () => {
   );
 };
 
-export default HotFlavour;
+export default UnusualFlavour;
