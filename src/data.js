@@ -9,6 +9,7 @@ export const COFFEE = [
     image:
       'https://st.kofio.cz/img_product/iqXzFhp0ZJ7KInQ/4765/Dc18vOdayo4fCkpESnls_612.png',
     rating: 5,
+    isUnusual: false,
   },
   {
     id: 1,
@@ -20,6 +21,7 @@ export const COFFEE = [
     image:
       'https://st.kofio.cz/img_product/SE5A8ZzNeG9T0iu/4748/6p9X32cbinz5wq8GgA4M_477.png',
     rating: 4,
+    isUnusual: true,
   },
   {
     id: 2,
@@ -31,6 +33,7 @@ export const COFFEE = [
     image:
       'https://cdn.shopify.com/s/files/1/0052/5490/5945/products/Colombia_Dos_Quebradas_1024x1024.jpg',
     rating: 4,
+    isUnusual: true,
   },
   {
     id: 3,
@@ -42,5 +45,6 @@ export const COFFEE = [
     image:
       ' https://cdn.myshoptet.com/usr/eshop.motmot.cz/user/shop/big/78-1_selva-negra.jpg',
     rating: 2,
+    isUnusual: false,
   },
 ];

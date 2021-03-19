@@ -10,8 +10,9 @@ import Process from './components/process/Process';
 import EditableProcess from './components/process/EditableProcess';
 import Image from './components/image/Image';
 import EditableImage from './components/image/EditableImage';
+import HotFlavour from './components/hotFlavour/HotFlavour';
 
-const Card = ({ image, title, subtitle, process, tags, rating }) => {
+const Card = ({ image, title, subtitle, process, tags, rating, isUnusual }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -29,6 +30,7 @@ const Card = ({ image, title, subtitle, process, tags, rating }) => {
       justifySelf="center"
       d="flex"
       flexDirection="column"
+      position="relative"
     >
       <Flex justifyContent="space-between">
         <IconButton
@@ -51,6 +53,7 @@ const Card = ({ image, title, subtitle, process, tags, rating }) => {
           displayChildren={props => <Rating value={props.value} />}
         />
       </Flex>
+      {isUnusual && <HotFlavour />}
       <Editable
         isEditing={isEditing}
         defaultValue={image}

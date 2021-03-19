@@ -1,6 +1,5 @@
 import { Grid, SimpleGrid } from '@chakra-ui/react';
 import Card from './Card';
-import { PROCESS } from './constants';
 import { useCoffee } from './context/CoffeeContext';
 
 const Main = () => {
@@ -18,6 +17,7 @@ const Main = () => {
             process={item.process}
             tags={item.flavourNotes}
             rating={item.rating}
+            isUnusual={item.isUnusual}
           />
         ))}
       </SimpleGrid>
