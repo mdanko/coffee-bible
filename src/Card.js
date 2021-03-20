@@ -86,7 +86,7 @@ const Card = ({ image, title, subtitle, process, tags, rating, isUnusual }) => {
         isEditing={isEditing}
         defaultValue={subtitle}
         editableChildren={props => <Input {...props} />}
-        displayChildren={props => <Text fontSize="2xl">{props.value}</Text>}
+        displayChildren={props => <Text fontSize="xl">{props.value}</Text>}
       />
       <Editable
         isEditing={isEditing}
