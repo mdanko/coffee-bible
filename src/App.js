@@ -3,14 +3,17 @@ import AppBar from './AppBar';
 import Fonts from './Fonts';
 import Main from './Main';
 import { CoffeeContextProvider } from './context/CoffeeContext';
+import { TabsContextProvider } from './context/TabsContext';
 
 const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <CoffeeContextProvider>
-        <Fonts />
-        <AppBar />
-        <Main />
+        <TabsContextProvider>
+          <Fonts />
+          <AppBar />
+          <Main />
+        </TabsContextProvider>
       </CoffeeContextProvider>
     </ChakraProvider>
   );

@@ -8,6 +8,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import AddDialog from './AddDialog';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
+import Tabs from './components/tabs/Tabs';
 
 const AppBar = () => {
   const bg = useColorModeValue('white', 'rgb(26, 32, 44)');
@@ -47,10 +48,12 @@ const AppBar = () => {
           src="https://cdn.dribbble.com/users/1274247/screenshots/6149307/artboard_1_copy-1.jpg"
           alt="Coffee Bible logo"
         />
-        <Heading fontFamily="ONEDAY" display={{ base: 'none', sm: 'block' }}>
+        <Heading fontFamily="ONEDAY" display={{ base: 'none', md: 'block' }}>
           Coffee Bible
         </Heading>
       </Stack>
+
+      <Tabs />
 
       <Stack spacing={4} direction="row" justifySelf="flex-end">
         <AddDialog />
