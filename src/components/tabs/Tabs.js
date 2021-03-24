@@ -2,7 +2,7 @@ import { HStack, useRadioGroup } from '@chakra-ui/react';
 import TabButton from './TabButton';
 import { useTabs } from '../../context/TabsContext';
 
-const Tabs = () => {
+const Tabs = props => {
   const { setSelectedTab } = useTabs();
   const options = [
     { key: 'all', value: 'All' },
@@ -19,7 +19,7 @@ const Tabs = () => {
   const group = getRootProps();
 
   return (
-    <HStack {...group}>
+    <HStack {...group} {...props}>
       {options.map(option => {
         const radio = getRadioProps({ value: option.key });
         return (

@@ -26,7 +26,7 @@ const TabButton = props => {
         }}
         px={{ base: 1, sm: 2 }}
         py={{ base: 1, sm: 2 }}
-        fontSize={{ base: 'xs', sm: 'sm', md: 'md' }}
+        fontSize={{ base: 'sm', md: 'md' }}
       >
         {props.children}
       </Box>
