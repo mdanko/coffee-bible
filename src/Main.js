@@ -6,8 +6,18 @@ import { useTabs } from './context/TabsContext';
 const Main = () => {
   const { coffeeData } = useCoffee();
   const { selectedTab } = useTabs();
-  const filterCoffee = (data, key) =>
-    key === 'unusual' ? data.filter(coffee => coffee.isUnusual) : data;
+  const filterCoffee = (data, key) => {
+    switch (key) {
+      case 'all':
+        return data.sort((a, b) => a.id - b.id);
+      case 'top':
+        return data.sort((a, b) => b.rating - a.rating).slice(0, 10);
+      case 'unusual':
+        return data.filter(coffee => coffee.isUnusual);
+      default:
+        return data;
+    }
+  };
   const displayedCoffeeData = filterCoffee(coffeeData, selectedTab);
 
   return (
