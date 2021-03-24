@@ -29,7 +29,6 @@ const AppBar = () => {
     <Flex
       as="nav"
       direction={{ base: 'column', sm: 'initial' }}
-      align={{ base: 'initial', sm: 'center' }}
       padding={{ base: 2, md: 8 }}
       position={{ base: 'fixed', md: isScrolled ? 'fixed' : 'static' }}
       top="0"
