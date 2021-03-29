@@ -9,7 +9,7 @@ const Main = () => {
   const filterCoffee = (data, key) => {
     switch (key) {
       case 'all':
-        return data.sort((a, b) => a.id - b.id);
+        return data.sort((a, b) => b.id - a.id);
       case 'top':
         return data.sort((a, b) => b.rating - a.rating).slice(0, 10);
       case 'unusual':
