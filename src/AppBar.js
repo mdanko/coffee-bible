@@ -45,7 +45,7 @@ const AppBar = () => {
       zIndex="1"
     >
       <Flex width="100%" justify="space-between">
-        <Stack direction="row">
+        <Stack direction="row" alignItems="center">
           <Image
             filter="hue-rotate(15deg)"
             h="50px"
