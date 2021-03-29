@@ -21,7 +21,7 @@ const Main = () => {
   const displayedCoffeeData = filterCoffee(coffeeData, selectedTab);
 
   return (
-    <Grid p={3} mt={{ base: 16, md: 0 }}>
+    <Grid p={3} mt={{ base: 28, sm: 16, md: 0 }}>
       <SimpleGrid minChildWidth={{ base: '300px', md: '400px' }} spacing="80px">
         {displayedCoffeeData.map(item => (
           <Card
