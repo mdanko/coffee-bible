@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { EditIcon } from '@chakra-ui/icons';
 import { Box, Text, Heading, Flex, IconButton, Input } from '@chakra-ui/react';
-import Editable from './Editable';
-import FlavourNotes from './components/flavourNotes/FlavourNotes';
-import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
-import Rating from './components/rating/Rating';
-import EditableRating from './components/rating/EditableRating';
-import Process from './components/process/Process';
-import EditableProcess from './components/process/EditableProcess';
-import Image from './components/image/Image';
-import EditableImage from './components/image/EditableImage';
-import UnusualFlavour from './components/unusualFlavour/UnusualFlavour';
-import EditableUnusualFlavour from './components/unusualFlavour/EditableUnusualFlavour';
+import Editable from '../editable/Editable';
+import FlavourNotes from '../flavourNotes/FlavourNotes';
+import EditableFlavourNotes from '../flavourNotes/EditableFlavourNotes';
+import Rating from '../rating/Rating';
+import EditableRating from '../rating/EditableRating';
+import Process from '../process/Process';
+import EditableProcess from '../process/EditableProcess';
+import Image from '../image/Image';
+import EditableImage from '../image/EditableImage';
+import UnusualFlavour from '../unusualFlavour/UnusualFlavour';
+import EditableUnusualFlavour from '../unusualFlavour/EditableUnusualFlavour';
 
 const Card = ({ image, title, subtitle, process, tags, rating, isUnusual }) => {
   const [isEditing, setIsEditing] = useState(false);

@@ -1,7 +1,7 @@
 import { Grid, SimpleGrid } from '@chakra-ui/react';
-import Card from './Card';
-import { useCoffee } from './context/CoffeeContext';
-import { useTabs } from './context/TabsContext';
+import Card from '../components/card/Card';
+import { useCoffee } from '../context/CoffeeContext';
+import { useTabs } from '../context/TabsContext';
 
 const Main = () => {
   const { coffeeData } = useCoffee();

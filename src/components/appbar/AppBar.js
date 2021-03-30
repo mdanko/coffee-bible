@@ -6,10 +6,10 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import AddDialog from './AddDialog';
+import AddDialog from '../add/AddDialog';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import PhoneTabs from './components/tabs/PhoneTabs';
-import Tabs from './components/tabs/Tabs';
+import PhoneTabs from '../tabs/PhoneTabs';
+import Tabs from '../tabs/Tabs';
 
 const AppBar = () => {
   const bg = useColorModeValue('white', 'rgb(26, 32, 44)');

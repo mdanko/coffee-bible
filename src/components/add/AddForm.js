@@ -6,12 +6,12 @@ import {
   FormLabel,
   Input,
 } from '@chakra-ui/react';
-import { useCoffee } from './context/CoffeeContext';
-import EditableFlavourNotes from './components/flavourNotes/EditableFlavourNotes';
-import EditableRating from './components/rating/EditableRating';
-import EditableProcess from './components/process/EditableProcess';
-import UploadImageInput from './components/image/UploadImageInput';
-import EditableUnusualFlavour from './components/unusualFlavour/EditableUnusualFlavour';
+import { useCoffee } from '../../context/CoffeeContext';
+import EditableFlavourNotes from '../flavourNotes/EditableFlavourNotes';
+import EditableRating from '../rating/EditableRating';
+import EditableProcess from '../process/EditableProcess';
+import UploadImageInput from '../image/UploadImageInput';
+import EditableUnusualFlavour from '../unusualFlavour/EditableUnusualFlavour';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();

@@ -1,7 +1,7 @@
 import { ChakraProvider, theme } from '@chakra-ui/react';
-import AppBar from './AppBar';
+import AppBar from './components/appbar/AppBar';
 import Fonts from './Fonts';
-import Main from './Main';
+import Main from './pages/Main';
 import { CoffeeContextProvider } from './context/CoffeeContext';
 import { TabsContextProvider } from './context/TabsContext';
 
