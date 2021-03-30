@@ -4,6 +4,7 @@ import { Input, InputGroup, InputRightElement } from '@chakra-ui/input';
 import { Wrap, WrapItem } from '@chakra-ui/layout';
 import { Tag, TagCloseButton, TagLabel } from '@chakra-ui/tag';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const EditableFlavourNotes = ({ flavourNotes, onAdd, onRemove }) => {
   const [flavourNote, setFlavourNote] = useState('');
@@ -49,6 +50,12 @@ const EditableFlavourNotes = ({ flavourNotes, onAdd, onRemove }) => {
       </Wrap>
     </>
   );
+};
+
+EditableFlavourNotes.propTypes = {
+  flavourNotes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
 };
 
 export default EditableFlavourNotes;

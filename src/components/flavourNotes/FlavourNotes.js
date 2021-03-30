@@ -1,5 +1,6 @@
 import { HStack } from '@chakra-ui/layout';
 import { Tag, TagLabel } from '@chakra-ui/tag';
+import PropTypes from 'prop-types';
 
 const FlavourNotes = ({ tags }) => {
   return (
@@ -17,6 +18,10 @@ const FlavourNotes = ({ tags }) => {
       ))}
     </HStack>
   );
+};
+
+FlavourNotes.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default FlavourNotes;
