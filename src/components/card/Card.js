@@ -12,6 +12,7 @@ import Image from '../image/Image';
 import EditableImage from '../image/EditableImage';
 import UnusualFlavour from '../unusualFlavour/UnusualFlavour';
 import EditableUnusualFlavour from '../unusualFlavour/EditableUnusualFlavour';
+import PropTypes from 'prop-types';
 
 const Card = ({ image, title, subtitle, process, tags, rating, isUnusual }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -110,6 +111,15 @@ const Card = ({ image, title, subtitle, process, tags, rating, isUnusual }) => {
       />
     </Box>
   );
+};
+
+Card.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  rating: PropTypes.number.isRequired,
+  isUnusual: PropTypes.bool.isRequired,
 };
 
 export default Card;

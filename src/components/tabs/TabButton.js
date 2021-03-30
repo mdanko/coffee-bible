@@ -1,4 +1,5 @@
 import { Box, useColorModeValue, useRadio } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 const TabButton = props => {
   const bg = useColorModeValue('orange.500', 'orange.300');
@@ -32,6 +33,12 @@ const TabButton = props => {
       </Box>
     </Box>
   );
+};
+
+TabButton.propTypes = {
+  value: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
+    .isRequired,
 };
 
 export default TabButton;

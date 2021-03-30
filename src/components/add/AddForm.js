@@ -12,6 +12,7 @@ import EditableRating from '../rating/EditableRating';
 import EditableProcess from '../process/EditableProcess';
 import UploadImageInput from '../image/UploadImageInput';
 import EditableUnusualFlavour from '../unusualFlavour/EditableUnusualFlavour';
+import PropTypes from 'prop-types';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
@@ -115,10 +116,10 @@ const AddForm = ({ closeDialog }) => {
               </FormControl>
             )}
           />
-          <Field key="unusualFlavor" name="unusualFlavor">
+          <Field key="isUnusual" name="isUnusual">
             {({ field }) => (
               <FormControl>
-                <FormLabel htmlFor="unusualFlavor">Unusual Flavor</FormLabel>
+                <FormLabel htmlFor="isUnusual">Unusual Flavor</FormLabel>
                 <EditableUnusualFlavour
                   value={field.value}
                   onChange={value => props.setFieldValue('isUnusual', value)}
@@ -169,6 +170,10 @@ const AddForm = ({ closeDialog }) => {
       )}
     </Formik>
   );
+};
+
+AddForm.propTypes = {
+  closeDialog: PropTypes.func.isRequired,
 };
 
 export default AddForm;

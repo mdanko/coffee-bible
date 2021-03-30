@@ -1,4 +1,5 @@
 import { Checkbox } from '@chakra-ui/checkbox';
+import PropTypes from 'prop-types';
 
 const EditableUnusualFlavour = ({ value, onChange }) => {
   return (
@@ -10,6 +11,11 @@ const EditableUnusualFlavour = ({ value, onChange }) => {
       Unusual Flavor
     </Checkbox>
   );
+};
+
+EditableUnusualFlavour.propTypes = {
+  value: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default EditableUnusualFlavour;

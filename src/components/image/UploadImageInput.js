@@ -1,5 +1,6 @@
 import { Input } from '@chakra-ui/input';
 import { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 
 const UploadImageInput = forwardRef(({ onChange, ...props }, ref) => {
   return (
@@ -13,5 +14,9 @@ const UploadImageInput = forwardRef(({ onChange, ...props }, ref) => {
     />
   );
 });
+
+UploadImageInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 export default UploadImageInput;

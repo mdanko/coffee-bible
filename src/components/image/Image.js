@@ -1,4 +1,5 @@
 import { Image as ChakraImage } from '@chakra-ui/image';
+import PropTypes from 'prop-types';
 
 const Image = ({ src, h, w }) => {
   return (
@@ -13,6 +14,12 @@ const Image = ({ src, h, w }) => {
       objectFit="cover"
     />
   );
+};
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  h: PropTypes.string,
+  w: PropTypes.string,
 };
 
 export default Image;

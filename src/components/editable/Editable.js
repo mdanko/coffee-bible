@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Editable = ({
   isEditing,
@@ -16,6 +17,13 @@ const Editable = ({
         : displayChildren({ value })}
     </>
   );
+};
+
+Editable.propTypes = {
+  isEditing: PropTypes.bool.isRequired,
+  defaultValue: PropTypes.any,
+  editableChildren: PropTypes.func.isRequired,
+  displayChildren: PropTypes.func.isRequired,
 };
 
 export default Editable;

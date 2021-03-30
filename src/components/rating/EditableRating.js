@@ -1,6 +1,7 @@
 import { IconButton } from '@chakra-ui/button';
 import { StarIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/layout';
+import PropTypes from 'prop-types';
 
 const Rating = ({ value, onChange }) => {
   return (
@@ -21,6 +22,11 @@ const Rating = ({ value, onChange }) => {
         ))}
     </Box>
   );
+};
+
+Rating.propTypes = {
+  value: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Rating;

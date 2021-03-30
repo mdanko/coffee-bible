@@ -1,6 +1,7 @@
 import Icon from '@chakra-ui/icon';
 import { Tooltip } from '@chakra-ui/tooltip';
 import { PROCESS } from '../../constants';
+import PropTypes from 'prop-types';
 
 const Process = ({ value }) => {
   const process = PROCESS[value];
@@ -12,6 +13,10 @@ const Process = ({ value }) => {
       </span>
     </Tooltip>
   );
+};
+
+Process.propTypes = {
+  value: PropTypes.string.isRequired,
 };
 
 export default Process;
