@@ -19,7 +19,7 @@ const PhoneTabs = props => {
     >
       <TabList>
         {options.map(option => {
-          return <Tab>{option.value}</Tab>;
+          return <Tab key={option.key}>{option.value}</Tab>;
         })}
       </TabList>
     </Tabs>

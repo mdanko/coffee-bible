@@ -1,8 +1,7 @@
 import { createContext, useContext, useState } from 'react';
-import { COFFEE } from '../data';
 
 const initialState = {
-  data: COFFEE,
+  data: [],
 };
 
 export const CoffeeContext = createContext(initialState);
@@ -24,6 +23,7 @@ export const CoffeeContextProvider = ({ children }) => {
     <CoffeeContext.Provider
       value={{
         addCoffee,
+        setCoffeeData,
         coffeeData,
       }}
     >
