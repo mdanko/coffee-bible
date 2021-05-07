@@ -8,7 +8,6 @@ const Main = () => {
   const { coffeeData, setCoffeeData } = useCoffee();
   const { selectedTab } = useTabs();
   const filterCoffee = (data, key) => {
-    debugger;
     switch (key) {
       case 'all':
         return data.slice().sort((a, b) => b._id.localeCompare(a._id));
@@ -35,16 +34,7 @@ const Main = () => {
     <Grid p={3} mt={{ base: 28, sm: 16, md: 0 }}>
       <SimpleGrid minChildWidth={{ base: '300px', md: '400px' }} spacing="80px">
         {displayedCoffeeData.map(item => (
-          <Card
-            key={item._id}
-            image={item.image}
-            title={item.roastery}
-            subtitle={`${item.country} ${item.farm}`}
-            process={item.process}
-            tags={item.flavourNotes}
-            rating={item.rating}
-            isUnusual={item.isUnusual}
-          />
+          <Card key={item._id} data={item} />
         ))}
       </SimpleGrid>
     </Grid>

@@ -18,11 +18,18 @@ export const CoffeeContextProvider = ({ children }) => {
         ...coffee,
       })
     );
+  const editCoffee = updatedCoffee =>
+    setCoffeeData(
+      coffeeData.map(coffee =>
+        coffee._id === updatedCoffee._id ? updatedCoffee : coffee
+      )
+    );
 
   return (
     <CoffeeContext.Provider
       value={{
         addCoffee,
+        editCoffee,
         setCoffeeData,
         coffeeData,
       }}
