@@ -13,6 +13,7 @@ import EditableProcess from '../process/EditableProcess';
 import UploadImageInput from '../image/UploadImageInput';
 import EditableUnusualFlavour from '../unusualFlavour/EditableUnusualFlavour';
 import PropTypes from 'prop-types';
+import { upload } from '../../api/file';
 
 const AddForm = ({ closeDialog }) => {
   const { addCoffee } = useCoffee();
@@ -38,10 +39,25 @@ const AddForm = ({ closeDialog }) => {
         isUnusual: false,
       }}
       onSubmit={async (values, actions) => {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        addCoffee({ ...values });
+        debugger;
+        const imageUrl = await upload(values.image);
+
         actions.setSubmitting(false);
-        closeDialog();
+        fetch('https://coffee-bible.herokuapp.com/api/coffee/', {
+          method: 'POST',
+          body: JSON.stringify({
+            ...values,
+            image: imageUrl,
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        })
+          .then(res => res.json())
+          .then(json => {
+            debugger;
+            console.log(json);
+            addCoffee({ ...values, image: imageUrl });
+            closeDialog();
+          });
       }}
     >
       {props => (
@@ -147,10 +163,7 @@ const AddForm = ({ closeDialog }) => {
                 <FormLabel htmlFor="image">Image</FormLabel>
                 <UploadImageInput
                   onChange={e =>
-                    props.setFieldValue(
-                      'image',
-                      URL.createObjectURL(e.target.files[0])
-                    )
+                    props.setFieldValue('image', e.target.files[0])
                   }
                 />
               </FormControl>
